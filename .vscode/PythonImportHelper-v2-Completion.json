@@ -1,0 +1,395 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "CORS",
+        "importPath": "flask_cors",
+        "description": "flask_cors",
+        "isExtraImport": true,
+        "detail": "flask_cors",
+        "documentation": {}
+    },
+    {
+        "label": "APIException",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_sitemap",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "FamilyStructure",
+        "importPath": "datastructures",
+        "description": "datastructures",
+        "isExtraImport": true,
+        "detail": "datastructures",
+        "documentation": {}
+    },
+    {
+        "label": "FamilyMember",
+        "importPath": "datastructures",
+        "description": "datastructures",
+        "isExtraImport": true,
+        "detail": "datastructures",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "pytest,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest.",
+        "description": "pytest.",
+        "detail": "pytest.",
+        "documentation": {}
+    },
+    {
+        "label": "handle_invalid_usage",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def handle_invalid_usage(error):\n    return jsonify(error.to_dict()), error.status_code\n# generate sitemap with all your endpoints\n@app.route('/')\ndef sitemap():\n    return generate_sitemap(app)\n@app.route('/members', methods=['GET'])\ndef get_members():\n    try:\n        members = sidhu_family.get_all_members()",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "sitemap",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def sitemap():\n    return generate_sitemap(app)\n@app.route('/members', methods=['GET'])\ndef get_members():\n    try:\n        members = sidhu_family.get_all_members()\n        response_body = [member.__dict__ for member in members]\n        return jsonify(response_body), 200\n    except Exception as e:\n        return jsonify({\"error\": str(e)}), 500",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "get_members",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def get_members():\n    try:\n        members = sidhu_family.get_all_members()\n        response_body = [member.__dict__ for member in members]\n        return jsonify(response_body), 200\n    except Exception as e:\n        return jsonify({\"error\": str(e)}), 500\n@app.route('/member/<int:member_id>', methods=['GET'])\ndef get_member(member_id):\n    try:",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "get_member",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def get_member(member_id):\n    try:\n        member = sidhu_family.get_member(member_id)\n        if member:\n            return jsonify(member.__dict__), 200\n        else:\n            return jsonify({\"error\": \"Member not found\"}), 400\n    except Exception as e:\n        return jsonify({\"error\": str(e)}), 500\n@app.route('/member', methods=['POST'])",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "add_member",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def add_member():\n    try:\n        data = request.get_json()\n        if not data or not all(k in data for k in (\"first_name\", \"age\", \"lucky_numbers\")):\n            return jsonify({\"error\": \"Invalid input\"}), 400\n        new_member = FamilyMember(data[\"first_name\"], data[\"age\"], data[\"lucky_numbers\"])\n        sidhu_family.add_member(new_member)\n        return jsonify(new_member.__dict__), 200\n    except Exception as e:\n        return jsonify({\"error\": str(e)}), 500",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "delete_member",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def delete_member(member_id):\n    try:\n        result = sidhu_family.delete_member(member_id)\n        if result:\n            return jsonify({\"done\": True}), 200\n        else:\n            return jsonify({\"error\": \"Member not found\"}), 400\n    except Exception as e:\n        return jsonify({\"error\": str(e)}), 500\n# this only runs if `$ python src/app.py` is executed",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "app = Flask(__name__)\napp.url_map.strict_slashes = False\nCORS(app)\n# create the jackson family object\njackson_family = FamilyStructure(\"Jackson\")\nuser = FamilyMember(\"deep\", 30, [1, 5])\nsidhu_family = FamilyStructure('sidhu')\nsidhu_family.add_member(user)\n# Handle/serialize errors like a JSON object\n@app.errorhandler(APIException)",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "app.url_map.strict_slashes",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "app.url_map.strict_slashes = False\nCORS(app)\n# create the jackson family object\njackson_family = FamilyStructure(\"Jackson\")\nuser = FamilyMember(\"deep\", 30, [1, 5])\nsidhu_family = FamilyStructure('sidhu')\nsidhu_family.add_member(user)\n# Handle/serialize errors like a JSON object\n@app.errorhandler(APIException)\ndef handle_invalid_usage(error):",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "jackson_family",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "jackson_family = FamilyStructure(\"Jackson\")\nuser = FamilyMember(\"deep\", 30, [1, 5])\nsidhu_family = FamilyStructure('sidhu')\nsidhu_family.add_member(user)\n# Handle/serialize errors like a JSON object\n@app.errorhandler(APIException)\ndef handle_invalid_usage(error):\n    return jsonify(error.to_dict()), error.status_code\n# generate sitemap with all your endpoints\n@app.route('/')",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "user",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "user = FamilyMember(\"deep\", 30, [1, 5])\nsidhu_family = FamilyStructure('sidhu')\nsidhu_family.add_member(user)\n# Handle/serialize errors like a JSON object\n@app.errorhandler(APIException)\ndef handle_invalid_usage(error):\n    return jsonify(error.to_dict()), error.status_code\n# generate sitemap with all your endpoints\n@app.route('/')\ndef sitemap():",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "sidhu_family",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "sidhu_family = FamilyStructure('sidhu')\nsidhu_family.add_member(user)\n# Handle/serialize errors like a JSON object\n@app.errorhandler(APIException)\ndef handle_invalid_usage(error):\n    return jsonify(error.to_dict()), error.status_code\n# generate sitemap with all your endpoints\n@app.route('/')\ndef sitemap():\n    return generate_sitemap(app)",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "FamilyStructure",
+        "kind": 6,
+        "importPath": "src.datastructures",
+        "description": "src.datastructures",
+        "peekOfCode": "class FamilyStructure:\n    def __init__(self, last_name):\n        self.last_name = last_name\n        self._members = []\n    def _generateId(self):\n        return random.randint(0, 99999999)\n    def add_member(self, member):\n        member.id = self._generateId()\n        member.last_name = self.last_name\n        self._members.append(member)",
+        "detail": "src.datastructures",
+        "documentation": {}
+    },
+    {
+        "label": "FamilyMember",
+        "kind": 6,
+        "importPath": "src.datastructures",
+        "description": "src.datastructures",
+        "peekOfCode": "class FamilyMember:\n    def __init__(self, first_name, age, lucky_numbers):\n        self.id = None\n        self.first_name = first_name\n        self.age = age\n        self.lucky_numbers = lucky_numbers\n        self.last_name = None\n    def __str__(self):\n        return f\"{self.first_name} {self.last_name}, Age: {self.age}, Lucky Numbers: {self.lucky_numbers}\"",
+        "detail": "src.datastructures",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def client():\n    with mock.patch('flask.Flask', lambda x: Flask(x)):\n        from app import app\n        db_fd, app.config['DATABASE'] = tempfile.mkstemp()\n        app.config['TESTING'] = True\n        with app.test_client() as client:\n            # with app.app_context():\n            #     app.init_db()\n            yield client\n        os.close(db_fd)",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_first_three",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_first_three(client):\n    response = client.get('/members')\n    members = json.loads(response.data)\n    assert len(members) == 3\n@pytest.mark.it(\"Implement method POST /member to add a new member\")\ndef test_add_implementation(client):\n    response = client.post('/member', json={\n\t\t\"first_name\": \"Tommy\",\n        \"id\": 3443,\n\t\t\"age\": 23,",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_add_implementation",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_add_implementation(client):\n    response = client.post('/member', json={\n\t\t\"first_name\": \"Tommy\",\n        \"id\": 3443,\n\t\t\"age\": 23,\n\t\t\"lucky_numbers\": [34,65,23,4,6]\n\t})\n    assert response.status_code == 200\n@pytest.mark.it(\"Method POST /member should return something, NOT EMPTY\")\ndef test_add_empty_reponse_body(client):",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_add_empty_reponse_body",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_add_empty_reponse_body(client):\n    response = client.post('/member', json={\n\t\t\"first_name\": \"Sandra\",\n\t\t\"age\": 12,\n        \"id\": 4446,\n\t\t\"lucky_numbers\": [12,34,33,45,32,12]\n\t})\n    assert response.data != b\"\"\n@pytest.mark.it(\"Implement method GET /members\")\ndef test_get_members_exist(client):",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_members_exist",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_get_members_exist(client):\n    response = client.get('/members')\n    assert response.status_code == 200\n@pytest.mark.it(\"Method GET /members should return a list\")\ndef test_get_members_returns_list(client):\n    response = client.get('/members')\n    data = json.loads(response.data)\n    assert isinstance(data, list)\n@pytest.mark.it(\"We added two members using POST /member, when calling the GET /members should get a list of length == 5\")\ndef test_get_members_returns_list_of_five(client):",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_members_returns_list",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_get_members_returns_list(client):\n    response = client.get('/members')\n    data = json.loads(response.data)\n    assert isinstance(data, list)\n@pytest.mark.it(\"We added two members using POST /member, when calling the GET /members should get a list of length == 5\")\ndef test_get_members_returns_list_of_five(client):\n    response = client.get('/members')\n    members = json.loads(response.data)\n    assert len(members) == 5\n@pytest.mark.it(\"Method GET /member/<int:id> should exist\")",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_members_returns_list_of_five",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_get_members_returns_list_of_five(client):\n    response = client.get('/members')\n    members = json.loads(response.data)\n    assert len(members) == 5\n@pytest.mark.it(\"Method GET /member/<int:id> should exist\")\ndef test_get_single_member_implemented(client):\n    response = client.get('/member/3443')\n    assert response.status_code == 200\n@pytest.mark.it(\"Method GET /member/<int:id> should return a one single family member in a dictionary format\")\ndef test_get_single_member_returns_dict(client):",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_single_member_implemented",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_get_single_member_implemented(client):\n    response = client.get('/member/3443')\n    assert response.status_code == 200\n@pytest.mark.it(\"Method GET /member/<int:id> should return a one single family member in a dictionary format\")\ndef test_get_single_member_returns_dict(client):\n    response = client.get('/member/3443')\n    data = json.loads(response.data)\n    assert data is not None\n    assert isinstance(data, dict)\n@pytest.mark.it(\"The dictionary returned by GET /member/<int:id> should contain one family member with the keys [name, id, age, lucky_numbers]\")",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_single_member_returns_dict",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_get_single_member_returns_dict(client):\n    response = client.get('/member/3443')\n    data = json.loads(response.data)\n    assert data is not None\n    assert isinstance(data, dict)\n@pytest.mark.it(\"The dictionary returned by GET /member/<int:id> should contain one family member with the keys [name, id, age, lucky_numbers]\")\ndef test_get_single_member_has_keys(client):\n    response = client.get('/member/3443')\n    data = json.loads(response.data)\n    assert data is not None",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_single_member_has_keys",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_get_single_member_has_keys(client):\n    response = client.get('/member/3443')\n    data = json.loads(response.data)\n    assert data is not None\n    assert \"first_name\" in data\n    assert \"id\" in data\n    assert \"age\" in data\n    assert \"lucky_numbers\" in data\n@pytest.mark.it(\"Method GET /member/3443 should return Tommy\")\ndef test_get_first_member_tommy(client):",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_first_member_tommy",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_get_first_member_tommy(client):\n    response = client.get('/member/3443')\n    data = json.loads(response.data)\n    assert data is not None\n    assert \"first_name\" in data\n    assert data[\"first_name\"] == \"Tommy\"\n@pytest.mark.it(\"Implement method DELETE /member/<int:id> to delete a family member\")\ndef test_delete_member(client):\n    response = client.delete('/member/3443')\n    assert response.status_code == 200",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_member",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_delete_member(client):\n    response = client.delete('/member/3443')\n    assert response.status_code == 200\n@pytest.mark.it(\"Method DELETE /member/3443 should return dictionary with 'done' key\")\ndef test_delete_response(client):\n    client.post('/member', json={\n\t\t\"first_name\": \"Tommy\",\n        \"id\": 3443,\n\t\t\"age\": 23,\n\t\t\"lucky_numbers\": [34,65,23,4,6]",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_delete_response",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_delete_response(client):\n    client.post('/member', json={\n\t\t\"first_name\": \"Tommy\",\n        \"id\": 3443,\n\t\t\"age\": 23,\n\t\t\"lucky_numbers\": [34,65,23,4,6]\n\t})\n    response = client.delete('/member/3443')\n    assert response.json[\"done\"] == True\n@pytest.mark.it(\"After deleting the member 3443 we called GET /members and it should return a list with 4 members\")",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "test_get_members_returns_list_of_four",
+        "kind": 2,
+        "importPath": "src.test_solution",
+        "description": "src.test_solution",
+        "peekOfCode": "def test_get_members_returns_list_of_four(client):\n    response = client.get('/members')\n    members = json.loads(response.data)\n    assert len(members) == 4",
+        "detail": "src.test_solution",
+        "documentation": {}
+    },
+    {
+        "label": "APIException",
+        "kind": 6,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "class APIException(Exception):\n    status_code = 400\n    def __init__(self, message, status_code=None, payload=None):\n        Exception.__init__(self)\n        self.message = message\n        if status_code is not None:\n            self.status_code = status_code\n        self.payload = payload\n    def to_dict(self):\n        rv = dict(self.payload or ())",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "has_no_empty_params",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def has_no_empty_params(rule):\n    defaults = rule.defaults if rule.defaults is not None else ()\n    arguments = rule.arguments if rule.arguments is not None else ()\n    return len(defaults) >= len(arguments)\ndef generate_sitemap(app):\n    links = []\n    for rule in app.url_map.iter_rules():\n        # Filter out rules we can't navigate to in a browser\n        # and rules that require parameters\n        if \"GET\" in rule.methods and has_no_empty_params(rule):",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_sitemap",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def generate_sitemap(app):\n    links = []\n    for rule in app.url_map.iter_rules():\n        # Filter out rules we can't navigate to in a browser\n        # and rules that require parameters\n        if \"GET\" in rule.methods and has_no_empty_params(rule):\n            url = url_for(rule.endpoint, **(rule.defaults or {}))\n            links.append(url)\n    links_html = \"\".join([\"<li><a href='\" + y + \"'>\" + y + \"</a></li>\" for y in links])\n    return \"\"\"",
+        "detail": "src.utils",
+        "documentation": {}
+    }
+]
